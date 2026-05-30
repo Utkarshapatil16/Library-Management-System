@@ -1,0 +1,43 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="absl-py" />
+          <option value="astunparse" />
+          <option value="click" />
+          <option value="django-cors-headers" />
+          <option value="gast" />
+          <option value="google-pasta" />
+          <option value="grpcio" />
+          <option value="h5py" />
+          <option value="joblib" />
+          <option value="Markdown" />
+          <option value="markdown-it-py" />
+          <option value="MarkupSafe" />
+          <option value="mdurl" />
+          <option value="ml_dtypes" />
+          <option value="numpy" />
+          <option value="opt_einsum" />
+          <option value="optree" />
+          <option value="Pygments" />
+          <option value="regex" />
+          <option value="rich" />
+          <option value="scikit-learn" />
+          <option value="scipy" />
+          <option value="threadpoolctl" />
+          <option value="tqdm" />
+          <option value="Werkzeug" />
+          <option value="whitenoise" />
+          <option value="keras" />
+          <option value="nltk" />
+          <option value="pillow" />
+          <option value="protobuf" />
+          <option value="tensorboard" />
+          <option value="tensorflow" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
