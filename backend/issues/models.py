@@ -30,7 +30,7 @@ class Issue(models.Model):
                         related_name='issued_by'
                     )
     issue_date    = models.DateField(auto_now_add=True)
-    due_date      = models.DateField()
+    due_date      = models.DateField(null=True, blank=True)
     return_date   = models.DateField(null=True, blank=True)
     status        = models.CharField(
                         max_length=20,

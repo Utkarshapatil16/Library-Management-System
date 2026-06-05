@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.utils import timezone
+from datetime import timedelta
 from books.models import Book
 from books.serializers import BookSerializer
 from students.serializers import StudentSerializer
@@ -10,19 +11,14 @@ Student = get_user_model()
 
 
 class IssueSerializer(serializers.ModelSerializer):
-    # Read only - shows full details
     book_detail    = BookSerializer(source='book', read_only=True)
     student_detail = StudentSerializer(source='student', read_only=True)
-
-    # Write only - accepts ids
     book    = serializers.PrimaryKeyRelatedField(
         queryset=Book.objects.all()
     )
     student = serializers.PrimaryKeyRelatedField(
         queryset=Student.objects.all()
     )
-
-    # Computed fields
     is_overdue   = serializers.ReadOnlyField()
     days_overdue = serializers.ReadOnlyField()
 
@@ -50,13 +46,13 @@ class IssueSerializer(serializers.ModelSerializer):
         read_only_fields = [
             'id',
             'issue_date',
+            'due_date',
             'status',
             'fine_amount',
             'created_at',
         ]
 
     def validate_book(self, book):
-        """Check if book is available"""
         if book.available_copies <= 0:
             raise serializers.ValidationError(
                 'No copies available for this book.'
@@ -64,24 +60,25 @@ class IssueSerializer(serializers.ModelSerializer):
         return book
 
     def validate_student(self, student):
-        """Check if student has less than 3 active issues"""
         active_issues = Issue.objects.filter(
             student=student,
             status__in=['issued', 'overdue', 'renewed']
         ).count()
         if active_issues >= 3:
             raise serializers.ValidationError(
-                'Student already has 3 active issues. '
-                'Please return a book first.'
+                'Student already has 3 active issues.'
             )
         return student
 
     def create(self, validated_data):
         from django.db import transaction
         with transaction.atomic():
+            # Auto set due date 14 days from today
+            validated_data['due_date'] = (
+                timezone.now().date() + timedelta(days=14)
+            )
             issue = Issue.objects.create(**validated_data)
-            # Reduce available copies
-            book = issue.book
+            book  = issue.book
             book.available_copies -= 1
             book.save()
         return issue
