@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7cc4f92-9d83-452f-8085-ea73b93e1a6a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/issues/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/issues/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/issues/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/issues/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Issues.js" afterDir="false" />
-    </list>
+    <list default="true" id="c7cc4f92-9d83-452f-8085-ea73b93e1a6a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
