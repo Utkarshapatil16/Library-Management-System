@@ -21,6 +21,7 @@ const Issues = () => {
 
     const isLibrarian = user?.role === 'admin' || user?.role === 'librarian';
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         loadAll();
     }, []);
@@ -269,7 +270,6 @@ const Issues = () => {
                             onSubmit={handleIssueSubmit}
                             style={styles.form}
                         >
-                            {/* Select Student */}
                             <div style={styles.inputGroup}>
                                 <label style={styles.label}>
                                     Select Student *
@@ -292,7 +292,6 @@ const Issues = () => {
                                 </select>
                             </div>
 
-                            {/* Select Book */}
                             <div style={styles.inputGroup}>
                                 <label style={styles.label}>
                                     Select Book *
@@ -316,89 +315,3 @@ const Issues = () => {
                                                 {b.available_copies} copies
                                             </option>
                                         ))}
-                                </select>
-                            </div>
-
-                            {/* Notes */}
-                            <div style={styles.inputGroup}>
-                                <label style={styles.label}>
-                                    Notes (optional)
-                                </label>
-                                <textarea
-                                    name="notes"
-                                    value={issueForm.notes}
-                                    onChange={handleIssueFormChange}
-                                    style={styles.textarea}
-                                    rows={3}
-                                    placeholder="Any notes..."
-                                />
-                            </div>
-
-                            {/* Info */}
-                            <div style={styles.infoBox}>
-                                ℹ️ Due date will be set to
-                                <strong> 14 days</strong> from today
-                            </div>
-
-                            {/* Buttons */}
-                            <div style={styles.modalButtons}>
-                                <button
-                                    type="button"
-                                    style={styles.cancelBtn}
-                                    onClick={() => setShowModal(false)}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    style={styles.submitBtn}
-                                >
-                                    Issue Book
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-};
-
-const styles = {
-    container:      { padding: '30px', maxWidth: '1200px', margin: '0 auto' },
-    loading:        { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', color: '#2c3e50' },
-    header:         { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' },
-    title:          { fontSize: '28px', color: '#2c3e50', margin: '0' },
-    addBtn:         { backgroundColor: '#3498db', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '5px', fontSize: '14px', cursor: 'pointer' },
-    filters:        { display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' },
-    filterBtn:      { padding: '8px 20px', borderRadius: '20px', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' },
-    count:          { color: '#7f8c8d', marginBottom: '10px', fontSize: '14px' },
-    tableContainer: { overflowX: 'auto', borderRadius: '10px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' },
-    table:          { width: '100%', borderCollapse: 'collapse', backgroundColor: 'white' },
-    tableHeader:    { backgroundColor: '#2c3e50', color: 'white' },
-    th:             { padding: '15px', textAlign: 'left', fontSize: '14px' },
-    tableRow:       { borderBottom: '1px solid #ecf0f1' },
-    td:             { padding: '12px 15px', fontSize: '14px', color: '#2c3e50' },
-    small:          { color: '#7f8c8d', fontSize: '12px' },
-    badge:          { color: 'white', padding: '4px 10px', borderRadius: '20px', fontSize: '12px' },
-    fine:           { color: '#e74c3c', fontWeight: 'bold' },
-    returnBtn:      { backgroundColor: '#2ecc71', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '3px', cursor: 'pointer', marginRight: '5px', fontSize: '12px' },
-    renewBtn:       { backgroundColor: '#f39c12', color: 'white', border: 'none', padding: '5px 10px', borderRadius: '3px', cursor: 'pointer', fontSize: '12px' },
-    noData:         { textAlign: 'center', padding: '40px', color: '#7f8c8d' },
-    modalOverlay:   { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 },
-    modal:          { backgroundColor: 'white', padding: '30px', borderRadius: '10px', width: '90%', maxWidth: '500px', maxHeight: '90vh', overflowY: 'auto' },
-    modalHeader:    { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' },
-    modalTitle:     { fontSize: '22px', color: '#2c3e50', margin: '0' },
-    closeBtn:       { backgroundColor: 'transparent', border: 'none', fontSize: '20px', cursor: 'pointer', color: '#7f8c8d' },
-    form:           { display: 'flex', flexDirection: 'column', gap: '15px' },
-    inputGroup:     { display: 'flex', flexDirection: 'column', gap: '5px' },
-    label:          { fontSize: '14px', fontWeight: 'bold', color: '#2c3e50' },
-    input:          { padding: '10px', borderRadius: '5px', border: '1px solid #ddd', fontSize: '14px', outline: 'none' },
-    textarea:       { padding: '10px', borderRadius: '5px', border: '1px solid #ddd', fontSize: '14px', outline: 'none', resize: 'vertical' },
-    infoBox:        { backgroundColor: '#eaf4fb', padding: '10px 15px', borderRadius: '5px', fontSize: '14px', color: '#2980b9' },
-    modalButtons:   { display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' },
-    cancelBtn:      { backgroundColor: '#95a5a6', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', fontSize: '14px' },
-    submitBtn:      { backgroundColor: '#3498db', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer', fontSize: '14px' },
-};
-
-export default Issues;
