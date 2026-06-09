@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Base URL for Django backend
 const API = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api',
+    baseURL: 'https://library-management-backend-gray.vercel.app/api',
 });
 
 // Automatically add JWT token to every request
@@ -24,7 +24,7 @@ API.interceptors.response.use(
             try {
                 const refresh = localStorage.getItem('refresh');
                 const res = await axios.post(
-                    'http://127.0.0.1:8000/api/students/token/refresh/',
+                    'https://library-management-backend-gray.vercel.app/api/students/token/refresh/',
                     { refresh }
                 );
                 localStorage.setItem('access', res.data.access);
