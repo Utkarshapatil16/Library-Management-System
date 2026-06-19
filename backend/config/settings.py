@@ -120,9 +120,7 @@ SIMPLE_JWT = {
     'USER_ID_CLAIM':            'user_id',
 }
 
-# ── CORS ────────────────────────────────────────────────
-CORS_ALLOWED_ORIGINS = config(
-# ── CORS & CSRF ─────────────────────────────────────────
+# ── CORS & CSRF ───────────────────────────────
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -135,16 +133,3 @@ CSRF_TRUSTED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
-    'corsheaders.middleware.CorsMiddleware',
-
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
